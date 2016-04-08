@@ -5,16 +5,16 @@ use Bio::SeqIO;
 use Bio::PrimarySeq;
 
 # create a directory
-unless (-d "bacteria") {
-	mkdir "bacteria";
-	chdir "bacteria";
+unless (-d "protozoa") {
+        mkdir "protozoa";
+        chdir "protozoa";
 }
 
 # get the assembly file
 if (-e "assembly_summary.txt") {
 	system("rm assembly_summary.txt");
 }
-system("wget -q ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/assembly_summary.txt");
+system("wget -q ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/protozoa/assembly_summary.txt");
 
 unless (-e "assembly_summary.txt") {
 	warn "Unable to download assembly_summary.txt\n";
