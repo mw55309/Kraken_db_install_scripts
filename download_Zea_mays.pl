@@ -5,16 +5,16 @@ use Bio::SeqIO;
 use Bio::PrimarySeq;
 
 # create a directory
-unless (-d "fungi") {
-        mkdir "fungi";
-        chdir "fungi";
+unless (-d "Zea_mays") {
+        mkdir "Zea_mays";
+        chdir "Zea_mays";
 }
 
 # get the assembly file
 if (-e "assembly_summary.txt") {
 	system("rm assembly_summary.txt");
 }
-system("wget -q ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/fungi/assembly_summary.txt");
+system("wget -q https://ftp.ncbi.nih.gov/genomes/refseq/plant/Zea_mays/assembly_summary.txt");
 
 unless (-e "assembly_summary.txt") {
 	warn "Unable to download assembly_summary.txt\n";
@@ -35,7 +35,7 @@ while(<IN>) {
 
 	my @d = split(/\t/);
 
-	if ($d[11] eq "Complete Genome") {
+	if ($d[11] eq "Chromosome") {
 		my $ftppath = $d[19];
 
 		# get the unique assembly name
@@ -82,7 +82,6 @@ while(<IN>) {
 
 		# remove original
 		system("rm ${aname}_genomic.fna");
-
 	}
 }
 

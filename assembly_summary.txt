@@ -1,0 +1,3 @@
+#   See ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt for a description of the columns in this file.
+# assembly_accession	bioproject	biosample	wgs_master	refseq_category	taxid	species_taxid	organism_name	infraspecific_name	isolate	version_status	assembly_level	release_type	genome_rep	seq_rel_date	asm_name	submitter	gbrs_paired_asm	paired_asm_comp	ftp_path	excluded_from_refseq
+GCF_000005005.1	PRJNA249074			representative genome	4577	4577	Zea mays			latest	Chromosome	Major	Full	2013/10/24	B73 RefGen_v3	Maize Genome Sequencing Project	GCA_000005005.5	different	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/005/GCF_000005005.1_B73_RefGen_v3	
