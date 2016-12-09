@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
-docker build --tag kraken-builder .
+image="registry.pivotbio.me/kraken-builder"
 
-docker run -ti kraken-builder
+docker build --tag ${image} .
+
+docker run -ti ${image}
