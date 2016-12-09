@@ -16,7 +16,10 @@ RUN apt-get install --yes \
 # Install perl modules 
 RUN apt-get install -y cpanminus
 
-RUN cpanm CPAN::Meta \
+RUN cpanm \
+ --notest \
+ --no-man-pages \
+ CPAN::Meta \
  readline \ 
  Term::ReadKey \
  YAML \
@@ -44,7 +47,10 @@ RUN apt-get remove --yes libgd-gd2-perl
 RUN apt-get install --yes \
  libgd2-noxpm-dev
 
-RUN cpanm GD \
+RUN cpanm \
+ --notest \
+ --no-man-pages \
+ GD \
  GD::Graph \
  GD::Graph::smoothlines 
 
@@ -57,7 +63,10 @@ RUN apt-get install --yes \
  libxml-parser-perl \
  libsoap-lite-perl 
 
-RUN cpanm Test::Most \
+RUN cpanm \
+ --notest \
+ --no-man-pages \
+ Test::Most \
  Algorithm::Munkres \
  Array::Compare Clone \
  PostScript::TextBlock \
@@ -84,6 +93,8 @@ RUN apt-get install -y \
 
 # Install BioPerl last built
 RUN cpanm -v  \
+ --notest \
+ --no-man-pages \
  CJFIELDS/BioPerl-1.6.924.tar.gz
 
 WORKDIR /work
