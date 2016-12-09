@@ -36,5 +36,5 @@ done
   --max-db-size 16 \
   --jellyfish-hash-size 1600M \
   --work-on-disk \
-  --threads 32 \
+  --threads 16 \
   --db krakendb
