@@ -1,1 +1,4 @@
-Dockerfile
+*
+!entrypoint.sh
+!*.pl
+!kraken_shell_scripts
