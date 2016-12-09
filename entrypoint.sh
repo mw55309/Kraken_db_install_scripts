@@ -1,21 +1,22 @@
-#!/bin/bash
-
 set -euo pipefail
 
 databases=(
 Zea_mays
 human
 bacteria
+archaea
 )
 
 for database in "${databases[@]}"; do
+  echo "----> downloading ${database}"
   perl download_${database}.pl
 done
 
+mkdir human
+mv *.tax.fna human/
+
 # there's a step here I need to work out where the human database gets stuck
 # someplace random and weird
-
-exit
 
 /kraken/kraken-build \
   --download-taxonomy \
@@ -26,12 +27,14 @@ for database in "${databases[@]}"; do
     /kraken/kraken-build \
       --add-to-library ${fna} \
       --db krakendb
+    rm ${fna}
   done
 done
 
-./kraken/kraken-build \
-  --max-db-size 32 \
-  --jellyfish-hash-size 3200M \
+/kraken/kraken-build \
+  --build \
+  --max-db-size 16 \
+  --jellyfish-hash-size 1600M \
   --work-on-disk \
   --threads 32 \
   --db krakendb
