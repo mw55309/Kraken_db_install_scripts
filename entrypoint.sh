@@ -2,9 +2,12 @@ set -euo pipefail
 
 databases=(
 Zea_mays
-human
-bacteria
 archaea
+bacteria
+fungi
+human
+protozoa
+viral
 )
 
 for database in "${databases[@]}"; do
@@ -27,6 +30,8 @@ for database in "${databases[@]}"; do
     /kraken/kraken-build \
       --add-to-library ${fna} \
       --db krakendb
+
+    # remove original fasta file to save space
     rm ${fna}
   done
 done
