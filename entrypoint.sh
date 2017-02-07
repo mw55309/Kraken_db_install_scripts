@@ -18,9 +18,6 @@ done
 mkdir human
 mv *.tax.fna human/
 
-# there's a step here I need to work out where the human database gets stuck
-# someplace random and weird
-
 /kraken/kraken-build \
   --download-taxonomy \
   --db krakendb
@@ -43,3 +40,15 @@ done
   --work-on-disk \
   --threads 16 \
   --db krakendb
+
+# remove unnecessary files
+
+# tar a file
+
+# test database by running kraken
+/kraken/kraken \
+  --db krakendb \
+  --fasta-input \
+  --quick \
+  --threads 16 \
+  --output kraken-test-out.txt
