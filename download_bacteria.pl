@@ -7,8 +7,8 @@ use Bio::PrimarySeq;
 # create a directory
 unless (-d "bacteria") {
 	mkdir "bacteria";
-	chdir "bacteria";
 }
+chdir "bacteria";
 
 # get the assembly file
 if (-e "assembly_summary.txt") {
