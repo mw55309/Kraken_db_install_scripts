@@ -12,9 +12,10 @@ chdir "viral";
 
 # get the assembly file
 if (-e "assembly_summary.txt") {
-	system("rm assembly_summary.txt");
+	unlink("assembly_summary.txt");
 }
-system("wget -q ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/viral/assembly_summary.txt");
+system("wget -q ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/viral/assembly_summary.txt") == 0
+    or die "failed: $?";
 
 unless (-e "assembly_summary.txt") {
 	warn "Unable to download assembly_summary.txt\n";
@@ -45,14 +46,16 @@ while(<IN>) {
 		my $fullpath = "$ftppath" . "/" . $aname . "_genomic.fna.gz";
 
 		# download
-		system("wget -q $fullpath");
+		system("wget -q $fullpath") == 0
+                    or die "failed: $?";
 		unless (-e "${aname}_genomic.fna.gz") {
 			warn "We don't have ${aname}_genomic.fna.gz, did download fail?";
 			next;
 		}
 
 		# gunzip
-		system("gunzip ${aname}_genomic.fna.gz");
+		system("gunzip ${aname}_genomic.fna.gz") == 0
+                    or die "failed: $?";
 		unless (-e "${aname}_genomic.fna") {
 			warn "We don't have ${aname}_genomic.fna, did gunzip fail?";
 			next;
@@ -81,7 +84,7 @@ while(<IN>) {
 		}
 
 		# remove original
-		system("rm ${aname}_genomic.fna");
+		unlink("${aname}_genomic.fna");
 
 	}
 }
