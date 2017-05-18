@@ -9,7 +9,8 @@ use Bio::PrimarySeq;
 my $fa = "ftp://ftp.ensembl.org/pub/release-84/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz";
 
 # get the assembly file
-system("wget -q $fa");
+system("wget -q $fa") == 0
+    or die "failed: $?";
 
 # open the file
 my $fname = basename($fa);
